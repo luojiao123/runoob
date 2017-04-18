@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>boolean</title>
+</head>
+<body>
+<script>
+
+    //constructor 属性返回对创建此对象的 Boolean 函数的引用。
+    var test=new Boolean();
+
+    if (test.constructor==Array)
+    {
+        document.write("This is an Array");
+    }
+    if (test.constructor==Boolean)
+    {
+        document.write("This is a Boolean");
+    }
+    if (test.constructor==Date)
+    {
+        document.write("This is a Date");
+    }
+    if (test.constructor==String)
+    {
+        document.write("This is a String");
+    }
+
+    document.write('<hr />');
+    //使用 prototype 属性来向对象添加属性：
+    function employee(name,job,born)
+    {
+        this.name=name;
+        this.job=job;
+        this.born=born;
+    }
+
+    var bill=new employee("Bill Gates","Engineer",1985);
+
+    employee.prototype.salary=null;
+    bill.salary=20000;
+
+    document.write(bill.name);
+    document.write(bill.job);
+    document.write(bill.born);
+    document.write(bill.salary);
+
+
+    document.write('<hr />');
+
+</script>
+</body>
+</html>

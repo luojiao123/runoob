@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for</title>
+</head>
+<body>
+<script>
+    /* 作业：请用循环遍历下面数组中的每个名字，并显示Hello, xxx!：
+     请尝试for循环和while循环，并以正序、倒序两种方式遍历。
+     var arr = ['Bart', 'Lisa', 'Adam'];
+     */
+
+    var arr = ['Bart','Lisa','Adam'];
+    for(var i=0;i<arr.length;i++){
+        document.write('Hello,'+arr[i]+'!<br>');
+    }
+    document.write('<hr />');
+    for(var i=arr.length-1;i>=0;i--){
+        document.write('Hello,'+arr[i]+'!<br>');
+    }
+    document.write('<hr />');
+    var b =0;
+    while (b<=arr.length-1){
+        document.write('Hello,'+arr[b]+'!<br>');
+        b++;
+    }
+    document.write('<hr />');
+    var len =arr.length-1;
+    while (len>=0){
+        document.write('Hello,'+arr[len]+'!<br>');
+        len--;
+    }
+
+
+</script>
+</body>
+</html>

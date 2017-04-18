@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+</head>
+<body>
+<script>
+    //绝对值
+//    function abs(x) {
+//         if(x>=0){
+//            return x;
+//        }else {
+//            return -x;
+//        }
+//    }
+//document.write(abs());
+//    abs();
+//    var abs = function () {
+//        alert(111);
+//    }
+   //abs();
+   // window.onload = abs;
+    function foo(x) {
+        alert(x);
+        for(var i=0;i<arguments.length;i++){
+            alert(arguments[i]);
+        }
+    }
+    //foo(10,20,30);
+
+    function abs() {
+        if(arguments.length === 0){
+            return 0;
+        }
+        var x = arguments[0];
+        return x >=0?x:-x;
+    }
+    document.write(abs()+"<br>");
+    document.write(abs(10)+"<br>");
+    document.write(abs(-9)+"<br>");
+
+
+    function c(a,b,c) {
+        if(arguments.length === 2){
+            c = b;
+            b = 2;
+        }
+        return c;
+    }
+
+    document.write(c(3,5)+"<br>");
+
+    //计算圆面积
+    function area_of_circle(r,pi) {
+        if(isNaN(r)) {
+            alert("请调用数字！");
+        }else {
+            if (arguments.length == 1) {
+                pi=3.14;
+            }
+            var area = pi * (Math.pow(r, 2));//pow() 方法可返回 x 的 y 次幂的值
+            return area;
+        }
+
+    }
+
+    document.write(area_of_circle(2)+"<br>");
+
+
+
+</script>
+</body>
+</html>

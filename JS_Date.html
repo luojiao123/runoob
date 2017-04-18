@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date</title>
+</head>
+<body>
+<input type="text" placeholder="date">
+<script>
+    var date = new Date();
+    document.write('var date = new Date():<br>'+date+'<br />');
+    document.write('当前月份的日期 2017/4/14:<br>'+date.getDate()+'<br />');
+
+    //getDay() 和一个数组来输出星期的名称，而不是数字。
+    var weekday = new Array();
+    weekday[0]='星期天';
+    weekday[1]='星期一';
+    weekday[2]='星期二';
+    weekday[3]='星期三';
+    weekday[4]='星期四';
+    weekday[5]='星期五';
+    weekday[6]='星期六';
+    document.write(weekday[date.getDay()]+'<br />');
+
+</script>
+</body>
+</html>

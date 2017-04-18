@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+</head>
+<body>
+
+</body>
+<script>
+//    function runs() {
+//        console.log(this.name);
+//    }
+    var cat = {
+        name:'xiao',
+        color:'black',
+        alert:function () {
+            alert(this.color);//调用属性不用加括号
+        },
+        run:function () {
+           this.alert();
+        }
+    };
+    cat.run();//调用方法需要加括号
+</script>
+</html>

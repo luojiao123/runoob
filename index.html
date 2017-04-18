@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习 if else</title>
+</head>
+<body>
+<script>
+//    var xiaoming = {
+//        name:'小明',
+//        age:22,
+//        sex:'男',
+//        aihao:'唱歌',
+//        'midlle-school':"No.1 school"
+//    };
+//    document.write(xiaoming.name+'<br />');
+//    document.write(xiaoming['midlle-school']+'<br />');
+//    document.write(xiaoming.xxx+'<br />');
+//    xiaoming.xxx='sldfjls';
+//    document.write(xiaoming.xxx+'<br />');
+//    delete xiaoming.xxx;
+//    document.write(xiaoming.xxx+'<br />');
+//
+//    xiaoming.hasOwnProperty('name'); // true
+//    xiaoming.hasOwnProperty('toString'); // false
+//
+//    var a=1,b=5,c=9;
+//    if(a<b){
+//        document.write(222);
+//    }else if(b<9){
+//        document.write(333);
+//    }
+//作业：
+//小明身高1.75，体重80.5kg。请根据BMI公式（体重除以身高的平方）帮小明计算他的B
+//MI指数，并根据BMI指数：低于18.5：过轻，18.5-25：正常，25-28：过重，28-
+//32：肥胖，高于32：严重肥胖
+//用if...else...判断并显示结果
+
+    var BMI = 80.5/(1.75*1.75);
+    document.write(BMI+'<br>');
+    if(BMI < 18.5){
+        document.write("过轻");
+    }else if(BMI>=18.5 && BMI <=25){
+        document.write("正常");
+    }else if (BMI>25 && BMI<=28){
+        document.write("过重");
+    }else if (BMI>28 && BMI<=32){
+        document.write("肥胖");
+    }else if (BMI>32){
+        document.write("严重肥胖");
+    }
+
+document.write("<hr />");
+    if (BMI<18.5){
+        document.write("过轻");
+    }else {
+        if (BMI>=18.5 && BMI <=25){
+            document.write("正常");
+        }else {
+            if(BMI>25 && BMI<=28){
+                document.write("过重");
+            }else {
+                if (BMI>28 && BMI<=32){
+                    document.write("肥胖");
+                }else {
+                    if (BMI>32){
+                        document.write("严重肥胖");
+                    }
+                }
+            }
+        }
+    }
+
+document.write('<br>');
+
+//计算 1-100的和
+//var he=0;
+//    for(var i=1;i<=100;i++){
+//        he=he +i;//he+=i;
+//    }
+//    console.log(he);
+var he=1;
+    for(var i=1;i<=10;i++){
+        he=he *i;//he+=i;
+    }
+
+document.write(he);
+document.write('<br>');
+var arr =['aaa','bbb','ccc','ddd'];
+for(var i=0;i<arr.length;i++){
+    document.write(arr[i]+'<br>');
+}
+document.write(arr);
+
+document.write('<br>');
+    var xiaoming = {
+        name:'小明',
+        age:22,
+        sex:'男',
+        aihao:'唱歌',
+        'midlle-school':"No.1 school"
+    };
+for(var data in xiaoming){
+    //键
+    document.write('<br>');
+    //document.write(data);
+
+    //值
+    document.write('<br>');
+    document.write(xiaoming[data]);
+}
+
+</script>
+</body>
+</html>
