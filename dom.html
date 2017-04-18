@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dom</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li class="a">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li class="a">4</li>
+        <li>5</li>
+    </ul>
+</div>
+</body>
+<script>
+    var obox = document.getElementById("box");
+    obox.style.width = 200+'px';
+    obox.style.height = 200 +'px';
+    obox.style.backgroundColor = 'red';
+    obox.style.border = '2px solid #000';
+    //console.log(obox);
+
+    var oli = document.getElementsByTagName('li');
+    for(var i=0;i<oli.length;i++){
+        if(i%2==0){
+            oli[i].style.backgroundColor = '#fff';
+        }else {
+            oli[i].style.backgroundColor = '#ccc';
+        }
+    }
+
+    var lis = document.getElementsByClassName('a');
+    console.log(lis)
+    lis[1].style.backgroundColor = '#efa';
+    var flag = true;
+    obox.onclick = function () {
+        if(flag){
+            obox.style.backgroundColor = 'pink';
+            flag = false;
+        }else {
+            obox.style.backgroundColor = 'red';
+            flag = true;
+        }
+    }
+</script>
+</html>

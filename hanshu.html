@@ -21,6 +21,112 @@
            this.alert();
         }
     };
-    cat.run();//调用方法需要加括号
+    //cat.run();//调用方法需要加括号
+
+
+    var car = {
+        name:'xx',
+        color:'red',
+        run:function () {
+            alert('我能带你到远方！');
+        }
+    };
+    //car.run();
+
+//function getAge() {
+//    var y = new Date().getFullYear();
+//    return console.log(y - this.birth);
+//}
+var xiaoming = {
+    name: '小明',
+    birth: 1990,
+    age:function () {
+        var that = this;
+        function getAge() {
+            var y = new Date().getFullYear();
+            return console.log(y - that.birth);
+        }
+        return getAge();
+    }
+};
+//xiaoming.age(); // 25, 正常结果
+
+
+/*
+ * 虽然在一个独立的函数调用中，根据是否是strict模式，this指向undefined或window，不
+ 过，我们还是可以控制this的指向的！
+ 要指定函数的this指向哪个对象，可以用函数本身的apply方法，它接收两个参数，第一个
+ 参数就是需要绑定的this变量，第二个参数是Array，表示函数本身的参数。
+
+面向对象特性：封装、继承、多态
+ */
+function getAge2() {
+    var y = new Date().getFullYear();
+    return console.log(y - this.birth);
+}
+var xiaoming2 = {
+    name: '小明',
+    birth: 1990,
+    age:getAge2
+};
+//xiaoming2.age(); // 25, 正常结果
+//getAge2.apply(xiaoming,[]);
+
+
+
+
+//1.将数组中0去掉，然后存入新数组
+var arr =  [4, 0, 7, 9, 0, 0, 2, 6, 0, 3, 1, 0];
+var newarr = new Array();
+for(var i=0;i<arr.length;i++){
+    if(arr[i] != 0){
+        newarr.push(arr[i]);
+    }
+}
+console.log(newarr);//[4, 7, 9, 2, 6, 3, 1]
+
+
+
+//2.求n-m之间数据的和
+var num = 0;
+function num1(n,m) {
+    for(var i=n;i<=m;i++){
+        num+=i;
+    }
+    return num;
+}
+//console.log(num1(1,100));
+
+//求圆的面积
+    function  getArea(r,pi) {
+        if (arguments.length == 1){
+            pi = 3.14;
+        }
+        return Math.pow(r,2)*pi;
+    }
+   // console.log(getArea(2));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 </html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS_tab</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        .tab{
+            width: 600px;
+            height:auto;
+            margin: 0 auto;
+        }
+        .tabtitle{
+            width: 600px;
+            height: 40px;
+            border: 1px solid #ccc;
+        }
+        .tabtitle ul li{
+            list-style: none;
+            float: left;
+            width: 150px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #ccc;
+        }
+        .tabtitle ul li:first-child{
+            background-color: pink;
+        }
+        .tabcont{
+            width: 600px;
+            height: 400px;
+            border: 1px solid #ccc;
+        }
+        .tabcont ul li{
+            list-style: none;
+            display: none;
+            width: 600px;
+            height: 400px;
+            background-color: pink;
+        }
+
+    </style>
+</head>
+<body>
+<div class="tab">
+    <div class="tabtitle">
+        <ul>
+            <li>ONE</li>
+            <li>TWO</li>
+            <li>THREE</li>
+            <li>FOUR</li>
+        </ul>
+    </div>
+    <div class="tabcont">
+        <ul>
+            <li style="display: block">1.my first cont</li>
+            <li>2.my second cont</li>
+            <li>3.my three cont</li>
+            <li>4.my four cont</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+<script>
+    function tab(tabtitle,tabcont) {
+        var titles = document.getElementsByClassName(tabtitle);
+        var conts = document.getElementsByClassName(tabcont);
+
+        for(var i=0;i<titles.length;i++){
+            var tlis = titles[i].getElementsByTagName('li');
+            var clis = conts[i].getElementsByTagName('li');
+//        console.log(tlis)
+            for(var j= 0;j<tlis.length;j++){
+                tlis[j].index= j;
+                tlis[j].onclick = function () {
+                    for(var k=0;k<clis.length;k++){
+                        clis[k].style.display = 'none';
+                        tlis[k].style.backgroundColor = '#ccc';
+                    }
+                    clis[this.index].style.display = 'block';
+                    clis[this.index].style.backgroundColor = 'pink';
+                    this.style.backgroundColor = 'pink';
+                }
+
+            }
+        }
+    }
+
+    //tab('tabtitle','tabcont');
+
+
+    var tab =  {
+        titles:document.getElementsByClassName('tabtitle'),
+        conts:document.getElementsByClassName('tabcont'),
+        init:function () {
+            for(var i=0;i<this.titles.length;i++){
+                var tlis = this.titles[i].getElementsByTagName('li');
+                var clis = this.conts[i].getElementsByTagName('li');
+//        console.log(tlis)
+                for(var j= 0;j<tlis.length;j++){
+                    tlis[j].index= j;
+                    tlis[j].onclick = function () {
+                        for(var k=0;k<clis.length;k++){
+                            clis[k].style.display = 'none';
+                            tlis[k].style.backgroundColor = '#ccc';
+                        }
+                        clis[this.index].style.display = 'block';
+                        clis[this.index].style.backgroundColor = 'pink';
+                        this.style.backgroundColor = 'pink';
+                    }
+
+                }
+            }
+        }
+    }
+
+//tab.init();
+
+    function tab1(tabtitle,tabcont) {
+        for(var i=0;i<arguments.length;i++){
+            if(arguments.length==2){
+                var titles = document.getElementsByClassName(arguments[0]);
+                var conts = document.getElementsByClassName(arguments[1]);
+            }else {
+                var titles = document.getElementsByClassName(arguments[0]);
+                var conts = document.getElementsByClassName(arguments[1]);
+            }
+        }
+        for(var i=0;i<titles.length;i++){
+            var tlis = titles[i].getElementsByTagName('li');
+            var clis = conts[i].getElementsByTagName('li');
+//        console.log(tlis)
+            for(var j= 0;j<tlis.length;j++){
+                tlis[j].index= j;
+                tlis[j].onclick = function () {
+                    for(var k=0;k<clis.length;k++){
+                        clis[k].style.display = 'none';
+                        tlis[k].style.backgroundColor = '#ccc';
+                    }
+                    clis[this.index].style.display = 'block';
+                    clis[this.index].style.backgroundColor = 'pink';
+                    this.style.backgroundColor = 'pink';
+                }
+
+            }
+        }
+
+    }
+
+    tab1('tabtitle','tabcont','dsf');
+
+
+
+/*点击标题有背景色，函数化
+ function tab(arguments) {
+
+ }
+
+    function tab(obj) {
+
+    }
+    tab('box')
+
+    var tab={
+
+    }
+    tab.init();
+ */
+
+
+</script>
+</html>

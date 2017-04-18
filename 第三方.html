@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map</title>
+</head>
+<body>
+<script>
+    //用array实现
+    var names = ['wangming','xiaofang','lifang'];
+    var score = [99,56,89];
+    document.write('-array-'+score[names.indexOf('wangming')]+'<br />')
+
+    //用Map实现
+    var map = new Map([['wangming',99],['xiaofang',56],['lifang',89]]);
+    document.write('-map-'+ map.get('wangming')+'<br />');
+
+    var m  = new Map();
+    m.set('lsjf',44);
+    m.set('hh',34);
+    m.set('ee',34);
+    m.set('hh',89);
+    console.log('-map-'+ m.get('lsjf'));
+    console.log(m.has('Adam')); // 是否存在key 'Adam': true
+    console.log(m.delete('lsjf'));
+    console.log(m);
+    console.log(m.size);
+    console.log(m.get('hh'));
+
+    //链式写法
+    var p = new Map()
+        .set('xl',1)
+        .set('lj',2)
+        .set('tt',3)
+        .set('qq',9);
+
+    console.log(p);
+    console.log(p.get("qq"));
+
+
+    console.log(p.clear());
+    console.log(p.size);
+</script>
+</body>
+</html>
