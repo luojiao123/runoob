@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插入节点</title>
+</head>
+<body>
+<p id="add">sdffffffffffffffffffff</p>
+<div class="box1">
+    <p>ld</p>
+    <p>sdf</p>
+    <p>ews</p>
+
+</div>
+</body>
+<script>
+    var box1= document.getElementsByClassName('box1')[0];
+    //box1.innerHTML = '<span>child</span>'
+
+    var add = document.getElementById('add');
+    box1.appendChild(add);//将id为add的元素添加到box1子元素的最后
+
+    var dtadd = document.createElement('p');
+    dtadd.innerText = '我是动态添加的节点';
+    box1.appendChild(dtadd);
+
+    var style = document.createElement('style');
+    style.setAttribute('type','text/css');
+    style.innerText = '#add{color:red}';
+    document.getElementsByTagName('head')[0].appendChild(style);
+
+    var ibefore = document.createElement('a');
+    ibefore.setAttribute('href','#');
+    ibefore.innerText = '点我';
+    box1.insertBefore(ibefore,add);
+    console.log(ibefore);
+
+
+</script>
+</html>

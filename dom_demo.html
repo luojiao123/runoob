@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态生成排行</title>
+    <style>
+        li:nth-child(even){
+            background-color: #ea7514;
+        }
+        li:nth-child(odd){
+            background-color: #ccc;
+        }
+        ol{list-style-type:none;counter-reset:sectioncounter -7;}
+        ol li:before {
+            content:counter(sectioncounter) " ";
+            counter-increment:sectioncounter;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+<script>
+    var body = document.getElementsByTagName('body')[0];
+    console.log(body);
+    var main = document.createElement('div');
+    main.setAttribute('style','width:320px;height:380px;border:1px solid #ccc;');
+    body.appendChild(main);
+    var title = document.createElement('h3');
+    title.innerText = '热点排行';
+    main.appendChild(title);
+    var ol = document.createElement('ol');
+    main.appendChild(ol);
+    var news = [
+        '举个例子，下面的代码动态创建了',
+        '可以实现很多功能。',
+        '动态创建一个节点然后添加到DOM树中',
+        '然后把它添加',
+        '这样就动态地给文档添加了新的CSS定义',
+        '下面的代码动态创建了一个节点到节点的末尾',
+        '一个节点到节点的末尾，',
+        '举个例子',
+        '动态地给文档添加了新的CSS定义',
+        '这样就'
+    ];
+    for(var i=0;i<=10;i++){
+        var li = document.createElement('li');
+        li.innerText = news[i];
+        ol.appendChild(li);
+    }
+
+    var removechild = ol.getElementsByTagName('li')[10];//获取要删除的节点
+    ol.removeChild(removechild);//要删除一个节点，首先要获得该节点本身以及它的父节点，然后，调用父节点的removeChild把自己删掉：
+
+
+</script>
+</html>
