@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿QQ</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 279px;
+            height: 696px;
+            border: 1px solid #ccc;
+            margin: 50px auto 0;
+        }
+        ul li{
+            list-style: none;
+        }
+        .cont{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="header">
+            <h1>QQ</h1>
+        </div>
+        <div class="main">
+            <!--<select>-->
+                <!--<optgroup label="a">-->
+                    <!--<option>1</option>-->
+                    <!--<option>2</option>-->
+                    <!--<option>3</option>-->
+                <!--</optgroup>-->
+                <!--<option>dsfsdf</option>-->
+            <!--</select>-->
+
+            <div class="tit">
+                <h4>名字</h4>
+                <ul class="cont">
+                    <li><a href="">sdf</a></li>
+                    <li><a href="">dsf</a></li>
+                    <li><a href="">ert</a></li>
+                    <li><a href="">uyyu</a></li>
+                    <li><a href="">ioja</a></li>
+                </ul>
+                <h4>名字</h4>
+                <ul class="cont">
+                    <li><a href="">sdfdsfdf</a></li>
+                    <li><a href="">ddfdsfsf</a></li>
+                    <li><a href="">edfdsfrt</a></li>
+                    <li><a href="">udfdsfyyu</a></li>
+                    <li><a href="">udfdsfyyu</a></li>
+                    <li><a href="">idfdsfoja</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+        <div class="footer">
+
+        </div>
+    </div>
+</body>
+<script>
+    var title = document.getElementsByTagName('h4');
+    var conts = document.getElementsByClassName('cont');
+    for(var i=0;i<title.length;i++){
+        title[i].index = i;
+//        title[i].onclick = function () {
+//            console.log(title[i]);
+//            conts[this.index].style.display=conts[this.index].style.display=='block' ? 'none':'block';
+//        }
+        title[i].onclick = function () {
+
+            console.log(conts[this.index].style.display)
+            if(conts[this.index].style.display == ""){
+                conts[this.index].style.display = 'block';
+            }else if(conts[this.index].style.display == 'none'){
+                conts[this.index].style.display = 'block';
+            }else{
+                conts[this.index].style.display = 'none';
+            }
+        }
+
+    }
+</script>
+</html>

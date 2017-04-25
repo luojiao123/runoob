@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+</head>
+<body>
+    <input type="text"><br />
+    <select onchange="alert('gaibianl')"><br />
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+    <button>点我有惊喜</button><br />
+    <button>双击我有惊喜</button><br />
+    <!--<img src="aa.jpg" onerror="alert('没有此图片')">-->
+
+    <input type="text"><span></span><br /><br />
+    <input type="text" value="onkeydown"><span></span><br />
+    <input type="text" value="onkeypress"><span></span><br />
+    <input type="text" value="onkeyup"><span></span><br />
+    <button>onkeydown</button><span></span><br />
+    <button>onkeypress</button><span></span><br />
+</body>
+<script>
+    var inp = document.getElementsByTagName('input');
+    inp[0].onblur = function () {
+        alert('你要离开我了');
+    }
+    var btn = document.getElementsByTagName('button');
+    btn[0].onclick = function () {
+        alert('你好漂亮！');
+    }
+    btn[1].ondblclick = function () {
+        alert('恭喜你获得王者称号！');
+    }
+    var span = document.getElementsByTagName('span');
+    inp[1].onfocus = function () {
+        span[0].innerHTML = '请输入2-6个字！';
+        console.log('你获得焦点了哦！'+ inp[1])
+
+    }
+    inp[1].onblur=function () {
+        span[0].innerHTML = ' ';
+    }
+    inp[2].onkeydown = function (e) {
+        span[1].innerHTML = '你按下了'+e.key+'键';
+    }
+    inp[3].onkeypress = function (e) {
+        span[2].innerHTML = '你松开了'+e.key+'键';
+    }
+    inp[4].onkeyup = function (e) {
+        span[3].innerHTML = '你松开了'+e.key+'键';
+    }
+    window.onresize = function (e) {
+        console.log(e.body.offsetWidth)
+    }
+</script>
+</html>

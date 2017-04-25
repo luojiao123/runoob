@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿QQ</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li{
+            list-style: none;
+            border: 1px solid #ccc;
+        }
+        .nav{
+            width: 1100px;
+            margin: 0 auto;
+        }
+        .nav>li{
+            width: 200px;
+            float: left;
+        }
+        li ul{
+            display: none;
+            background: #fff;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul class="nav">
+            <li class="nav_cont"><a href="#"> HTML</a>
+                <ul>
+                    <li><a href="#">html\css\javascript</a>
+                        <ul>
+                            <li><a href="#">niulsdj</a> </li>
+                            <li><a href="#">niulsdj</a> </li>
+                            <li><a href="#">niulsdj</a> </li>
+                            <li><a href="#">niulsdj</a> </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                </ul>
+            </li>
+            <li class="nav_cont"><a href="#"> CSS</a>
+                <ul>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                </ul>
+            </li>
+            <li class="nav_cont"><a href="#"> JAVASCRIPT</a>
+                <ul>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                </ul>
+            </li>
+            <li class="nav_cont"><a href="#"> java</a>
+                <ul>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                </ul>
+            </li>
+            <li class="nav_cont"><a href="#">.net</a>
+                <ul>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                    <li><a href="#">html\css\javascript</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+//    function show(obj) {
+//        obj.children[1].style.display = 'block';
+//        obj.style.background = 'red';
+//    }
+//    function hide(obj) {
+//        obj.children[1].style.display = 'none';
+//        obj.style.background = '';
+//    }
+    window.onload = function () {
+        var nav = document.getElementsByClassName('nav')[0],//获取外层ul标签
+        lilen= nav.getElementsByClassName('nav_cont');//获取父级ul下面的li列表
+
+        for(var i = 0;i<lilen.length;i++){
+
+            lilen[i].index = i;
+            lilen[i].onmouseover = function () {
+               var oul = lilen[this.index].getElementsByTagName('ul')[0];//获取li列表下面嵌套的ul
+               this.style.background = "#ccc";
+               oul.style.display = 'block';
+
+//               var ooli = oul.getElementsByTagName('li');
+//               for(var j = 0;j<ooli.length;j++){
+//                   ooli[j].num = j;
+//                   ooli[j].onmouseover = function () {
+//                       var ooul = ooli[this.num].getElementsByTagName('ul')[o];
+//                       this.style.background = "#ccc";
+//                       ooul.style.display = 'block';
+//                       alert(this)
+//                   }
+//               }
+            }
+
+
+            lilen[i].onmouseout = function () {
+                var oul = lilen[this.index].getElementsByTagName('ul')[0];
+                this.style.background = "";
+                oul.style.display = 'none';
+            }
+         }
+
+
+    }
+</script>
+</html>

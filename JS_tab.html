@@ -4,28 +4,64 @@
     <meta charset="UTF-8">
     <title>JS_tab</title>
     <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        .tab{
+            width: 600px;
+            height:auto;
+            margin: 0 auto;
+        }
         .tabtitle{
             width: 600px;
             height: 40px;
             border: 1px solid #ccc;
+            border-bottom:none;
         }
+        .tabtitle ul li{
+            list-style: none;
+            float: left;
+            width: 150px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #ccc;
+        }
+        .tabtitle ul li:first-child{
+            background-color: pink;
+        }
+        .tabcont{
+            width: 600px;
+            height: 400px;
+            border: 1px solid #ccc;
+            border-top:none;
+        }
+        .tabcont ul li{
+            list-style: none;
+            display: none;
+            width: 600px;
+            height: 400px;
+            background-color: pink;
+        }
+
     </style>
 </head>
 <body>
 <div class="tabtitle">
     <ul>
-        <li>ONE</li>
-        <li>TWO</li>
-        <li>THREE</li>
-        <li>FOUR</li>
+        <li><a href="#one">ONE</a> </li>
+        <li><a href="#two">TWO</a></li>
+        <li><a href="#three">THREE</a></li>
+        <li><a href="#four">FOUR</a></li>
     </ul>
 </div>
 <div class="tabcont">
     <ul>
-        <li>1.my first cont</li>
-        <li>2.my second cont</li>
-        <li>3.my three cont</li>
-        <li>4.my four cont</li>
+        <li id="one">1.my first cont</li>
+        <li id="two">2.my second cont</li>
+        <li id="three">3.my three cont</li>
+        <li id="four">4.my four cont</li>
     </ul>
 </div>
 </body>
