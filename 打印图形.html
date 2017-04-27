@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>打印图形</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    <!-- 打印图形 -->
+    for(var i=0;i<4;i++){
+        document.write("************<br/>");
+    }
+    <!-- 打印一个年份的select下拉框 -->
+    document.write('<select>');
+    for(var i=1997;i<2017;i++){
+        document.write('<option>'+i+'</option>');
+    }
+    document.write('</select><br/>');
+
+    <!-- 打印一个年、月、日的select下拉框 -->
+    var date = new Date();
+    alert(date.get)
+    document.write('<select>');
+    for(var i=1997;i<2017;i++){
+        document.write('<option>'+i+'</option>');
+    }
+    document.write('</select>');
+    document.write('<select>');
+    for(var i=1;i<=12;i++){
+        document.write('<option>'+i+'</option>');
+    }
+    document.write('</select>');
+    document.write('<select>');
+    for(var i=1;i<date.getDay();i++){
+        document.write('<option>'+i+'</option>');
+    }
+    document.write('</select>');
+
+    function getCountDays() {
+                 var curDate = new Date();
+                /* 获取当前月份 */
+                var curMonth = curDate.getMonth();
+                /*  生成实际的月份: 由于curMonth会比实际月份小1, 故需加1 */
+               curDate.setMonth(curMonth + 1);
+                /* 将日期设置为0, 这里为什么要这样设置, 我不知道原因, 这是从网上学来的 */
+                curDate.setDate(0);
+               /* 返回当月的天数 */
+                return curDate.getDate();
+         }
+    // 例如,  获取当前月份(现在是3月)的总天数:
+         getCountDays()       // 返回31
+</script>
+</html>

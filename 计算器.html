@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+</head>
+<body>
+<input type="button" value="判断体重是否合适"><br />
+<label for="height">请输入您的身高（cm）：</label>
+<input type="text" id="height" value="请输入您的身高（cm）" /><br /><br />
+<label for="weight">请输入您的体重：</label>
+<input type="text" id="weight" value="请输入您的体重" /><br /><br />
+<input type="text">
+<select>
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+</select>
+<input type="text">
+<input type="button" value="=">
+<input type="text"><br /><br />
+<input type="button" value="判断是否是闰年">
+
+<input type="text"><br /><br />
+<span>14.4</span>+<input type="button" value="=">
+</body>
+<script>
+
+    window.onload = function () {
+        <!-- 判断体重是否合适 -->
+        var btn = document.getElementsByTagName('input');
+        btn[0].onclick = function () {
+            var h = btn[1].value;
+            var w = btn[2].value;
+            if(! isNaN(h) && !isNaN(w)){
+                if(w-(h - 108)*2 <= 10 && w-(h - 108)*2 >= -10){
+                    alert('身材保持的很棒哦！');
+                }else if(w-(h - 108)*2 < -10){
+                    alert('太瘦了，注意饮食哦！');
+                }
+                else {
+                    alert('太胖了，注意饮食哦！');
+                }
+            }else {
+                alert('请输入数字哦！');
+            }
+        }
+
+//       计算器
+        btn[5].onclick = function () {
+            var a1 = btn[3].value;
+            var a2 = btn[4].value;
+            var operator = document.getElementsByTagName('select')[0].value;
+            if(!isNaN(a1) && !isNaN(a2)){
+                if(operator == '+'){
+                    btn[6].value = parseInt(a1) + parseInt(a2);
+                }else if(operator == '-'){
+                    btn[6].value = parseInt(a1) - parseInt(a2);
+                }else if(operator == '*'){
+                    btn[6].value = parseInt(a1) * parseInt(a2);
+                }else if(operator == '/'){
+                    btn[6].value = parseInt(a1) / parseInt(a2);
+                }
+            }else {
+                alert('请输入数字哦！');
+            }
+        }
+
+        //判断是否为闰年
+        btn[7].onclick = function () {
+            var year = 2001;
+            if(year%4 == 0 && year%100 != 0 || year%400 == 0){
+                alert('是闰年');
+            }else {
+                alert('不是闰年');
+            }
+        }
+
+
+    }
+</script>
+</html>

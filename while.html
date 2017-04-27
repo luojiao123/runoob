@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>while循环</title>
+</head>
+<body>
+<!-- 计算1~100的和 -->
+<input type="button" value="求和">
+<input type="text"><br />
+
+<input type="button" value="求7的倍数">
+<input type="text"><br />
+
+<input type="button" value="求100以内的奇数">
+<input type="text"><br />
+
+<input type="button" value="求100以内的偶数的和">
+<input type="text"><br />
+
+<input type="button" value="求出1-1/2+1/3-1/4…..1/100的结果">
+<input type="text"><br />
+
+<input type="button" value="输入一个数，判断其是否为素数">
+<input type="text"><br />
+<hr />
+
+<h3>输出20-80之间能被3整除的整数，每5个一行</h3>
+<p id="tt"></p>
+</body>
+<script>
+    window.onload = function () {
+//        求1-100的和
+        var input = document.getElementsByTagName('input'),
+            sum=0;
+        input[0].onclick = function () {
+            var a = 1;
+//            while (a<=100){
+//                sum = sum+a;
+//                a++;
+//            }
+
+//            do{
+//                sum = sum+a;
+//                a++;
+//            }while (a<=100);
+            for(;a<=100;a++){
+                sum = sum+a;
+            }
+            input[1].value = sum;
+        }
+
+//        求7的倍数
+        input[2].onclick = function () {
+            var i =0;
+            while (i<=100){
+                if(i%7 == 0){
+                    console.log(i);
+                }
+                i++;
+            }
+//
+//            for(var i = 0 ;i<= 100 ;i++){
+//                if(i%7 == 0 ){
+//                    console.log(i);
+//                }
+//            }
+        }
+
+//        求100以内的奇数
+        input[4].onclick = function () {
+//            for(var i = 0 ;i<= 100 ;i++){
+//                if(i%2 != 0 ){
+//                    console.log(i);
+//                }
+//            }
+            var i = 0,arr = [];
+            while (i<=100){
+                if(i%2 != 0 ){
+                    arr.push(i);
+                }
+                i++;
+            }
+            input[5].value = arr.length;
+        }
+
+//        求100以内的偶数的和
+        input[6].onclick = function () {
+            var s = 0;
+//            for(var i = 0 ;i<= 100 ;i++){
+//                if(i%2 == 0 ){
+//                    s = s+i;
+//                }
+//            }
+            var i = 0;
+            while (i<=100){
+                if(i%2 == 0 ){
+                    s = s+i;
+                }
+                i++;
+            }
+            input[7].value = s;
+        }
+
+        //        求出1-1/2+1/3-1/4…..1/100的结果  1/1 - 1/2 + 1/3 - 1/4
+        input[8].onclick = function () {
+            var ss1 = 0,ss2 = 0;
+            for(var i = 1;i<=100;i++){
+                if(i%2 != 0){
+                    ss1 += 1/i;
+                }else{
+                    ss2 += -1/i;
+                }
+            }
+            input[9].value = ss1+ss2;
+
+        }
+
+        input[10].onclick = function () {
+            var txt = input[11].value;
+
+            if(isPrime(txt) == true){
+                alert('是素数');
+
+            }else {
+                alert('不是素数');
+            }
+        }
+
+        function isPrime(n) {
+            if (n <= 3) { return n > 1; }
+            if (n % 2 == 0 || n % 3 == 0) { return false; }
+
+            for (var  i = 5; i * i <= n; i += 6) {
+                if (n % i == 0 || n % (i + 2) == 0) { return false; }
+            }
+            return true;
+        }
+
+        function pass(num) {
+            if(num<2){
+                return false;
+            }else {
+                for(var i=2;i<=Math.sqrt(num);i++){
+                    if(num%i==0){
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+    }
+
+</script>
+</html>
