@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度评分</title>
+    <style>
+        i{
+            margin-top: 10px;
+            display: block;
+            width: 22px;
+            height:22px;
+            float: left;
+            background: url("images/star-default.jpg");
+        }
+        span{
+            line-height: 42px;
+            padding-left: 10px;
+            font-size:12px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <i></i><i></i><i></i><i></i><i></i><span></span>
+</div>
+</body>
+<script>
+    window.onload = function () {
+        var div = document.getElementsByTagName('span')[0];
+        var img = document.createElement('img');
+        img.setAttribute('src','images/JS21.jpg');
+        div.appendChild(img);
+        var icon = document.getElementsByTagName('i');
+        var conText = [
+            "很不满意:差得太离谱，与卖家描述的严重不符，非常不满",
+            "不满意:部分有破损，与卖家描述的不符，不满意",
+            "一般:质量一般，没有卖家描述的那么好",
+            "满意:质量不错，与卖家描述的基本一致，还是挺满意的",
+            "非常满意:质量非常好，与卖家描述的完全一致，非常满意"
+        ]
+        for(var i=0;i<icon.length;i++){
+            icon[i].index = i;
+            icon[i].onmouseover = function () {
+                for(var j=0;j<icon.length;j++){
+                    icon[j].style.background = 'url("images/star-default.jpg")';
+                }
+                if(this.index>1){
+                    for(var j=0;j<=this.index;j++){
+                        icon[j].style.background = 'url("images/star-good.jpg")';
+                        div.innerHTML = conText[this.index];
+                    }
+                }else {
+                    for(var j=0;j<=this.index;j++){
+                        icon[j].style.background = 'url("images/star-bad.jpg")';
+                        div.innerHTML = conText[this.index];
+                    }
+                }
+
+            }
+//            icon[i].onclick = function () {
+//                if(this.index>1){
+//                    for(var j=0;j<=this.index;j++){
+//                         icon[j].style.background = 'url("images/star-good.jpg")';
+//                    }
+//                }else {
+//                    for(var k=0;k<=this.index;k++){
+//                        icon[k].style.background = 'url("images/star-bad.jpg")';
+//                    }
+//                }
+//            }
+        }
+
+    }
+
+</script>
+</html>

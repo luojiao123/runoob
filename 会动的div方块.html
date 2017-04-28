@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>div方块</title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background-color: #2ab14f;
+            position: absolute;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="onclick">
+    <!--<div>1</div>-->
+    <!--<div>2</div>-->
+    <!--<div>3</div>-->
+    <!--<div>4</div>-->
+    <!--<div>5</div>-->
+</body>
+<script>
+    for(var i=0;i<5;i++){
+        document.write('<div>'+i+'</div>')
+    }
+    var btn = document.getElementsByTagName('input')[0];
+    var div = document.getElementsByTagName('div');
+
+    var count =0;
+    btn.onclick =function () {
+        count++;
+        for(var i=0;i<div.length;i++){
+            div[i].style.display = 'block';
+        }
+        if(count%4 == 1){
+            for(var i=0;i<div.length;i++){
+                div[i].style.top = 50*i+100+'px';
+                if(i<Math.round(div.length/2)){
+                    div[i].style.left = 50*(div.length-1-i)+100+'px';
+                }else{
+                    div[i].style.left = 50*i+100+'px';
+                }
+
+            }
+        }else if(count%4 == 2){
+            for(var i=0;i<div.length;i++){
+                div[i].style.left = 50*i+100+'px';
+                if(i<Math.round(div.length/2)){
+                    div[i].style.top = 50*(div.length-1-i)+100+'px';
+                }else{
+                    div[i].style.top = 50*i+100+'px';
+                }
+
+            }
+        }else if(count%4 == 3){
+            for(var i=0;i<div.length;i++){
+                div[i].style.top = 50*i+100+'px';
+                if(i<Math.round(div.length/2)){
+                    div[i].style.left = 50*i+100+'px';
+                }else{
+                    div[i].style.left = 50*(div.length-1-i)+100+'px';
+                }
+
+            }
+        }else if(count%4 == 0){
+            for(var i=0;i<div.length;i++){
+                div[i].style.left = 50*i+100+'px';
+                if(i<Math.round(div.length/2)){
+                    div[i].style.top = 50*i+100+'px';
+                }else{
+                    div[i].style.top = 50*(div.length-1-i)+100+'px';
+                }
+
+            }
+        }
+    }
+
+//    0    0    0    2        4
+//    1   2    3     4        5
+//    1   2    3     2        1
+//    50  100  150  200       250  top
+//    50  100  150  100       50    left
+// 50*1  50*2  50*3 50*（4-2） 50*（4-3）
+// 2i-1 1 3   5  7  9
+</script>
+</html>
