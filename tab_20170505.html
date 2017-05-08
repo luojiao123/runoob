@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul{
+            width: 204px;
+            height: 30px;
+            padding: 0;
+            margin: 0;
+            margin-left: -1px;
+        }
+        ul li{
+            width: 50px;
+            height: inherit;
+            line-height: 30px;
+            list-style: none;
+            float: left;
+            text-align: center;
+            background-color: #9dd8b1;
+            border-left: 1px solid #fff;
+        }
+
+        .conts{
+            width: 201px;
+            height: 200px;
+            border: 1px solid #2C8DFB;
+        }
+
+        .cont{
+            width: 201px;
+            height: 200px;
+            display: none;
+        }
+        #tab ul li.active{
+               background-color: #ea7514;
+           }
+        #tab div.active{
+            width: 201px;
+            height: 200px;
+            display: block;
+            background-color: #ea7514;
+        }
+        /**{*/
+            /*margin: 0;*/
+            /*padding: 0;*/
+        /*}*/
+
+        /*#tab{*/
+            /*width: 400px;*/
+            /*height: 600px;*/
+            /*border: 1px dotted #2ab14f;*/
+            /*margin: 10px auto;*/
+        /*}*/
+
+        /*ul li{*/
+            /*width: 24.7%;*/
+            /*height: 40px;*/
+            /*line-height: 40px;*/
+            /*text-align: center;*/
+            /*list-style: none;*/
+            /*float: left;*/
+            /*background-color: lawngreen;*/
+            /*border-right: 1px solid #fff;*/
+        /*}*/
+
+        /*.cont{*/
+            /*display: none;*/
+            /*width: 100%;*/
+            /*height: 560px;*/
+            /*background-color: #9dd8b1;*/
+        /*}*/
+        /*#tab div.active{display:block;background: #fff}*/
+        /*#tab li.active{*/
+            /*background-color: #fff;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div id="tab">
+    <ul>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div class="conts">
+        <div class="cont active">1sfdf</div>
+        <div class="cont">2sdfdsf</div>
+        <div class="cont">3dgrrtre</div>
+        <div class="cont">4gfhdgrrtre</div>
+    </div>
+</div>
+</body>
+<script>
+    var tab = document.getElementById('tab');
+    var olis = tab.getElementsByTagName('li');
+    var conts = tab.getElementsByClassName('cont');
+    alert(conts.length)
+    for(var i=0;i<olis.length;i++){
+        olis[i].index = i;
+        olis[i].onmouseover = function () {
+            for(var j=0;j<conts.length;j++){
+                olis[j].className = '';
+                conts[j].className = '';
+            }
+            this.className = 'active';
+            conts[this.index].className = 'active';
+        }
+    }
+
+
+</script>
+</html>

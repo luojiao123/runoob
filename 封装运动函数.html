@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装运动函数</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: #2ab14f;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="click">
+<div></div>
+</body>
+<script>
+    window.onload = function () {
+        function getStyle(obj,attr) {
+            if(obj.currentStyle){
+                return obj.currentStyle[attr];
+            }else {
+                return getComputedStyle(obj)[attr];
+            }
+        }
+        function starMove(obj,json,fnEnd) {
+            // 每次调用就只有一个定时器在工作，并且每次关闭或开启都是当前物体的定时器，防止与页面上其他的定时器产生冲突，使每个定时器互不干扰。
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var bStop = true;
+                for(var name in json){
+                    var iTarget = json[name]; // 目标点
+                    if(name == 'opacity'){
+                        var cur = parseInt(parseFloat(getStyle(obj,name))*100);
+                    }else {
+                        var cur = parseInt(getStyle(obj,name));
+                    };
+                    var speed = (iTarget-cur)/8;
+                    // 物体每30秒运动的距离，数值越小表示运动的越慢
+                    speed = speed>0?Math.ceil(speed):Math.floor(speed);
+                    if(name == 'opacity'){
+                        obj.style.opacity = (cur+speed)/100;
+                    }else {
+                        obj.style[name]=cur+speed+'px';
+                    };
+                    if(cur!=iTarget){
+                        bStop=false;
+                    }
+                }
+                if(bStop){
+                    clearInterval(obj.timer);
+                    if(fnEnd){
+                        fnEnd();
+                    }
+                }
+            },30);
+        }
+        var aInput = document.getElementsByTagName('input')[0];
+        var aDiv = document.getElementsByTagName('div')[0];
+        aInput.onclick = function () {
+            starMove(aDiv,{
+                opacity:48
+            },fn);
+        }
+        function fn() {
+            alert(1);
+        }
+    }
+
+</script>
+</html>

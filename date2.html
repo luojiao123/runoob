@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片倒计时</title>
+</head>
+<body>
+
+</body>
+<script>
+    for(var i = 0;i<8;i++){
+        document.body.innerHTML += '<img>';
+    }
+    var aImg = document.getElementsByTagName('img');
+//   console.log(aImg.length)
+    setInterval(fn,1000);
+    function fn() {
+        var mydate = new Date();
+        var iHours = mydate.getHours();
+        var iMin = mydate.getMinutes();
+        var iSec = mydate.getSeconds();
+        var str = ora(iHours)+':'+ora(iMin) +':'+ ora(iSec);
+
+        for(var i=0;i<str.length;i++){
+            aImg[i].src = 'images/'+str.charAt(i)+'.JPG';
+        }
+        aImg[2].src = 'images/colon.JPG';
+        setTimeout(function () {
+            aImg[2].src = 'images/space.JPG';
+        },500)
+        aImg[5].src = 'images/colon.JPG';
+        setTimeout(function () {
+            aImg[5].src = 'images/space.JPG';
+        },500)
+        function ora(a) {
+            if(a<10){
+                return '0'+a;
+            }else {
+                return a;
+            }
+        }
+
+    }
+</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="images/5.jpg"/>
+</body>
+<script>
+    for(var i=0;i<8;i++){
+        document.body.innerHTML += '<img>';
+    }
+
+    var img = document.getElementsByTagName('img');
+    setInterval(fn,1000)
+    function fn() {
+        var date = new Date();
+        var hour = date.getHours();
+        var minutes = date.getMinutes();
+        var second = date.getSeconds();
+        var str = ora(hour) +':'+ora(minutes) +':'+ora(second);
+//    console.log(str)
+        for(var j=0;j<str.length;j++){
+            img[j].src = 'images/'+j+'.JPG';
+        }
+        img[2].src = 'images/colon.JPG';
+        setTimeout(function () {
+            img[2].src = 'images/space.JPG';
+        },500);
+        img[5].src = 'images/colon.JPG';
+        setTimeout(function () {
+            img[5].src = 'images/space.JPG';
+        },500);
+        function ora(a) {
+            if(a<10){
+                return '0'+a;
+            }else {
+                return a;
+            }
+        }
+    }
+</script>
+</html>

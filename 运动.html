@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .run{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="奔跑吧！">
+    <div class="run">
+
+    </div>
+</body>
+<script>
+    var btn = document.getElementsByTagName('input')[0];
+    var odiv = document.getElementsByClassName('run')[0];
+    var num = 0;
+    btn.onclick = function () {
+       setInterval(function () {
+           num++;
+           odiv.style.left += 100+num+'px';
+       },500);
+    }
+
+    // 获取写在style中的或者外部引入的css的样式
+    function getStyle(obj,attr) {
+        if(obj.currentStyle){
+            return obj.currentStyle[attr];
+        }else {
+            return obj.getComputedStyle(obj)[attr];
+        }
+    }
+    alert(getStyle(odiv,'left'));
+</script>
+</html>

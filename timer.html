@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器</title>
+</head>
+<body>
+<input type="button" value="clear">
+<div class="box">
+
+</div>
+<input type="button" value="开始点名">
+<input type="button" value="结束点名">
+</body>
+<script>
+    var box = document.getElementsByClassName('box')[0];
+    var inp = document.getElementsByTagName('input');
+//    var timer = setInterval(function () {
+//        console.log(1);
+//    },1000)
+//    inp[0].onclick = function () {
+//        clearInterval(timer);
+//    }
+
+    var arr = ['陈一','黄二','张三','李四','王五','赵六','前七','孙八','杨九','吴十'];
+    var timer2 = null;
+    function dianming() {
+        var num = Math.floor(Math.random()*arr.length);
+        box.innerHTML = arr[num];
+    }
+    inp[1].onclick = function () {
+        clearInterval(timer2);
+        timer2 = setInterval(dianming,200);
+    }
+    inp[2].onclick = function () {
+        clearInterval(timer2);
+    }
+</script>
+</html>

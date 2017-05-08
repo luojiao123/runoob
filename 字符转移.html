@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符转移</title>
+    <style>
+        .main{
+            width: 900px;
+            height: 340px;
+            border: 1px solid #2ab14f;
+            margin: 0 auto;
+        }
+        .left{
+            width: 350px;
+            height: 300px;
+            border: 1px dotted #ea7514;
+            background-color: #2ab14f;
+        }
+
+        #lfp,#rtp{
+            margin: 10px;
+        }
+        .middle{
+            width: 165px;
+            height: 300px;
+            padding-left: 30px;
+        }
+        .middle input{
+            width: 102px;
+            height: 32px;
+            background-color: #ea7514;
+            border: none;
+            margin: 20px 0;
+            color: #fff;
+        }
+        .middle input.active{
+            background-color: #d88416;
+            outline: none;
+        }
+        .middle span{
+            display: block;
+            width: 110px;
+            height: 32px;
+            text-align: center;
+        }
+        .middle i{
+            display: block;
+            float: left;
+            width: 12px;
+            height: 12px;
+            background-color: #ea7514;
+            margin: 2px;
+        }
+        .right{
+            width: 350px;
+            height: 300px;
+            border: 1px dotted #ea7514;
+            background-color: #d853b7;
+        }
+        .lf{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="left lf">
+            <textarea id="lfp" cols="44" rows="18">一切能激发生机的思想都是美好的。敌人只有一个，那就是自私，它能使生命的泉水变得浑浊而枯竭，它能使心灵的天空变得狭窄而阴暗。它能使理想的星辰变得昏暗而模糊。努力激发你心中的光明和力量，激发那无私的爱和奉献的喜悦。cols是横向，rows是垂直方向</textarea>
+        </div>
+        <div class="middle lf">
+            <input type="button" value="文字转移" />
+            <span></span>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+        <div class="right lf">
+            <!--<div id="rtp">-->
+                <!--也可用-->
+
+            <!--</div>-->
+            <textarea id="rtp" cols="44" rows="18"></textarea>
+        </div>
+    </div>
+</body>
+<script>
+    var btn = document.getElementsByTagName('input')[0];
+    var lfp = document.getElementById('lfp');
+    var rtp = document.getElementById('rtp');
+    var ospan = document.getElementsByTagName('span')[0];
+    var oi = document.getElementsByTagName('i');
+//    var str = lfp.value;
+//    lfp.value = str.substring(1);
+//    rtp.value = str.substring(0,1);
+    ospan.innerHTML = 0 +'/'+0;
+    btn.onclick = function () {
+        var str = lfp.value;
+        if (str == false) {
+            alert('请输入内容');
+        } else {
+            for (var i = 0; i < str.length; i++) {
+                fnaas(i);
+            }
+        }
+        function fnaas(i) { // 函数要写在onclick里面，否则会出现问题
+              setTimeout(function () {
+                rtp.value += str.substring(i, i+1);  // 使用rtp.innerHTML也可以
+                lfp.value = str.substring(i+1);
+                  console.log(i);
+                ospan.innerHTML = i+1 +'/'+str.length;
+                btn.className = 'active';
+                btn.disabled = true;
+                for(var j=0;j<oi.length;j++){
+                    oi[j].style.backgroundColor = '#ea7514';
+                }
+                oi[i%oi.length].style.backgroundColor = 'red';
+                if(i == str.length-1){
+                    btn.className = '';
+                    btn.disabled = false;
+                    for(var j=0;j<oi.length;j++){
+                        oi[j].style.backgroundColor = '#ea7514';
+                    }
+                }
+            },50*i)
+
+        }
+    }
+</script>
+</html>

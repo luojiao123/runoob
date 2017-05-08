@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            list-style: none;
+            float:left;
+        }
+        #tabCon {
+            clear: both;
+        }
+        #tabCon div {
+            display:none;
+        }
+        #tabCon div.fdiv {
+            display:block;
+        }
+    </style>
+</head>
+<body>
+<div id="tanContainer">
+    <div id="tab">
+        <ul>
+            <li class="fli">标题一</li>
+            <li>标题二</li>
+            <li>标题三</li>
+            <li>标题四</li>
+        </ul>
+    </div>
+    <div id="tabCon">
+        <div class="fdiv">内容一</div>
+        <div>内容二</div>
+        <div>内容三</div>
+        <div>内容四</div>
+    </div>
+</div>
+</body>
+<script>
+    var tabs=document.getElementById("tab").getElementsByTagName("li");
+    var divs=document.getElementById("tabCon").getElementsByTagName("div");
+
+    for(var i=0;i<tabs.length;i++){
+        tabs[i].onclick=function(){change(this);}
+    }
+
+    function change(obj){
+        for(var i=0;i<tabs.length;i++){
+            if(tabs[i]==obj){
+                tabs[i].className="fli";
+                divs[i].className="fdiv";
+            }else{
+                tabs[i].className="";
+                divs[i].className="";
+            }
+        }
+    }
+</script>
+</html>

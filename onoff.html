@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开关</title>
+    <style>
+        div{
+            width: 50px;
+            height: 50px;
+            background: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="开关">
+    <div></div>
+</body>
+<script>
+    var btn = document.getElementsByTagName('input')[0];
+    var div = document.getElementsByTagName('div')[0];
+    var flag = true;
+    btn.onclick = function () {
+        if(flag){
+            div.style.display = 'none';
+        }else {
+            div.style.display = 'block';
+        }
+        flag = !flag;
+    }
+</script>
+</html>

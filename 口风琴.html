@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>口风琴</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .main{
+            width: 950px;
+            height: 350px;
+            border: 5px solid #d88416;
+            border-radius: 5px;
+            margin: 40px;
+            overflow: hidden;
+        }
+        img{
+            width: 450px;
+            height: 350px;
+            vertical-align: bottom;
+        }
+        ul{
+            position: relative;
+        }
+       li{
+            position: absolute;
+        }
+        ul li{
+
+            list-style: none;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <ul>
+            <li><img src="images/move_1.jpg" alt=""></li>
+            <li><img src="images/move_2.jpg" alt=""></li>
+            <li><img src="images/move_3.jpg" alt=""></li>
+            <li><img src="images/move_4.jpg" alt=""></li>
+            <li><img src="images/move_5.jpg" alt=""></li>
+            <li><img src="images/move_6.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var oli = document.getElementsByTagName('li');
+        for(var i=0;i<oli.length;i++){
+            oli[i].index = i;
+            if(i!=0){
+                oli[i].style.left = 450+(i-1)*100+'px';
+            }
+            oli[i].onmouseover = function () {
+                for(var j=0;j<oli.length;j++){
+                    if(j<=this.index){
+                        oli[j].style.left = 100*j + 'px';
+                    }else{
+                        oli[j].style.left = 450+(j-1)*100+'px';
+                    }
+                }
+            }
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+</head>
+<body>
+</body>
+<script>
+
+    for(var i=0;i<8;i++){
+        document.body.innerHTML += '<img>';
+    }
+
+    var img = document.getElementsByTagName('img');
+    setInterval(fn,1000)
+    function fn() {
+        var date = new Date();
+        var hour = date.getHours();
+        var minutes = date.getMinutes();
+        var second = date.getSeconds();
+        var str = ora(hour) +':'+ora(minutes) +':'+ora(second);
+//    console.log(str)
+        for(var j=0;j<str.length;j++){
+            img[j].src = 'images/'+str.charAt(j)+'.jpg';
+        }
+        img[2].src = 'images/colon.jpg';
+        setTimeout(function () {
+            img[2].src = 'images/space.jpg';
+        },500);
+        img[5].src = 'images/colon.jpg';
+        setTimeout(function () {
+            img[5].src = 'images/space.jpg';
+        },500);
+        function ora(a) {
+            if(a<10){
+                return '0'+a;
+            }else {
+                return a;
+            }
+        }
+    }
+
+//    setInterval(function () {
+//
+//    },1000)
+</script>
+</html>
