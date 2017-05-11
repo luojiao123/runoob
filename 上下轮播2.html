@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上下轮播</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .img{
+            width: 1000px;
+            height: 300px;
+            margin: 0 auto;
+            border: 1px solid #2ab14f;
+            position: relative;
+            overflow: hidden;
+        }
+        ul{
+            width: 1000px;
+            position: absolute;
+        }
+        ul li{
+            width: 1000px;
+            height: 300px;
+            list-style: none;
+        }
+        img{
+            width: 900px;
+            height: 300px;
+            display: block;
+        }
+
+        i{
+            display: block;
+            width: 15px;
+            height: 15px;
+            font-size: 12px;
+            float: left;
+            background-color: #9dd8b1;
+            border-radius: 50%;
+            color: #000;
+            margin: 5px;
+        }
+        #ospan{
+            float: right;
+        }
+        span{
+            display: block;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            color: #fff;
+        }
+        .red{
+            background-color: red;
+        }
+        .green{
+            background-color: green;
+        }
+        .blue{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="img">
+        <ul>
+            <li><img src="images/banner1.jpg" alt="banner"></li>
+            <li><img src="images/banner2.jpg" alt="banner"></li>
+            <li><img src="images/banner3.jpg" alt="banner"></li>
+        </ul>
+        <div id="ospan">
+            <span class="red">1</span>
+            <span class="blue">2</span>
+            <span class="green">3</span>
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var oul = document.getElementsByTagName('ul')[0];
+        var oli = oul.getElementsByTagName('li');
+        var ospan = document.getElementById('ospan');
+        var spans = ospan.getElementsByTagName('span');
+
+        var timer = null,
+             n=0;
+        clearInterval(timer);
+        timer = setInterval(fn,1000);
+        for(var i=0;i<spans.length;i++){
+            spans[i].index = i;
+            spans[i].onclick = function () {
+                clearInterval(timer);
+
+                n = this.index - 1;
+                oul.style.top = -(300*n)+'px';
+            }
+        }
+        function fn() {
+
+            if(n>oli.length-1){
+                n=0;
+            }
+            oul.style.top = -(300*n)+'px';
+            n++;
+        }
+
+
+    }
+</script>
+</html>

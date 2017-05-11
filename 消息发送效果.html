@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Message</title>
+    <style>
+        .box{
+            position: relative;
+        }
+        img{
+            width: 288px;
+            height: 594px;
+        }
+        .send{
+            position: absolute;
+            width: 235px;
+            height: 368px;
+            background: #f7f2ec;
+            left: 26px;
+            top: 87px;
+            border-bottom: 1px solid #ccc;
+        }
+        .nosend{
+            position: absolute;
+            width: 235px;
+            height: 50px;
+            background: #f4e8d8;
+            left: 26px;
+            bottom: 93px;
+        }
+        .nosend i{
+            display: block;
+            width: 40px;
+            height: 40px;
+            background: url("images/link.png") no-repeat -2px;
+        }
+        .text{
+            width: 142px;
+            height: 38px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="images/message.jpg" alt="message">
+        <div class="send"></div>
+        <div class="nosend">
+            <i></i>
+            <input class="text" type="text">
+            <input type="button" value="发送">
+        </div>
+    </div>
+</body>
+</html>

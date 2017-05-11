@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>提示</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            background: #F5E3C0;
+            margin: 0 auto;
+        }
+        p{
+            padding: 20px;
+
+        }
+        a{
+            text-decoration: none;
+            color: red;
+        }
+        .tips{
+            /*display: none;*/
+            position: absolute;
+            width: 150px;
+            background: #fff;
+            color: #000;
+            padding: 10px;
+            border-radius: 15px;
+            left:0;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>
+            数量近段时间佛<a href="#">设计</a>瑟吉欧和维尼熊雷欧老师，案例了哦和而我IIS<a href="#">程序员</a>拉丝机佛和违法建设里面发生地方煤矿<a href="#">前端汪</a>搜IE我，使劲儿哦哦
+            <a href="#">程序媛</a>和我流口水考虑考虑兄弟偶尔可瞌睡是非得失<a href="#">程序猿</a>哦IP了快速而免费登记开学季
+        </p>
+    </div>
+    <div class="tips">
+
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var oa = document.getElementsByTagName('a');
+        var tips = document.getElementsByClassName('tips')[0];
+        var arr = ['设计设计设计设计设计设计设计设计设计设计设计设计','程序员程序员程序员程序员程序员程序员程序员程序员','前端汪前端汪前端汪前端汪前端汪','程序媛程序媛程序媛','程序猿程序猿程序猿程序猿程序猿程序猿程序猿'];
+        for(var i=0;i<oa.length;i++){
+            oa[i].index = i;
+            oa[i].onmouseover = function () {
+                tips.style.display = 'block';
+                tips.innerHTML = arr[this.index];
+                tips.style.left = this.offsetLeft+'px';
+                tips.style.top = this.offsetTop+20+'px';
+            }
+            oa[i].onmouseout = function () {
+                tips.style.display = 'none';
+            }
+        }
+    }
+</script>
+</html>

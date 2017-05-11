@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上下轮播</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .img{
+            width: 1000px;
+            height: 300px;
+            margin: 0 auto;
+            border: 1px solid #2ab14f;
+            position: relative;
+            overflow: hidden;
+        }
+        ul{
+            width: 1000px;
+            position: absolute;
+        }
+        ul li{
+            width: 1000px;
+            height: 300px;
+            list-style: none;
+        }
+        img{
+            width: 900px;
+            height: 300px;
+            display: block;
+            padding-left: 50px;
+        }
+
+        i{
+            display: block;
+            width: 15px;
+            height: 15px;
+            font-size: 12px;
+            float: left;
+            background-color: #9dd8b1;
+            border-radius: 50%;
+            color: #000;
+            margin: 5px;
+        }
+        .red{
+            background-color: red;
+        }
+        .green{
+            background-color: green;
+        }
+        .blue{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="img">
+        <ul>
+            <li class="red"><img src="images/banner1.jpg" alt="banner"></li>
+            <li class="green"><img src="images/banner2.jpg" alt="banner"></li>
+            <li class="blue"><img src="images/banner3.jpg" alt="banner"></li>
+        </ul>O
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var oul = document.getElementsByTagName('ul')[0];
+        var oli = oul.getElementsByTagName('li');
+        var timer = null,
+             n=0;
+        clearInterval(timer);
+        timer = setInterval(function () {
+            if(n>oli.length-1){
+                n=0;
+            }
+            oul.style.top = -(300*n)+'px';
+            n++;
+
+        },1000);
+
+    }
+</script>
+</html>

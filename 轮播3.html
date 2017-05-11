@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>看一段背着写一段</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        img{
+            display: block;
+            width: 810px;
+            height: 270px;
+
+        }
+        a{
+            text-decoration: none;
+            color: #2ab14f;
+            padding-left: 20px;
+        }
+        .box{
+            width: 1010px;
+            height: 270px;
+            margin: 0 auto;
+            /*overflow: hidden;*/
+            position: relative;
+            cursor: pointer;
+        }
+        #aul{
+            width: 810px;
+            float: left;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #bul{
+            width: 200px;
+            height: 270px;
+            float: right;
+        }
+        #bul li{
+            width: 200px;
+            height: 90px;
+            line-height: 90px;
+            text-align: center;
+            background: yellow;
+            color: #ccc;
+        }
+        #bul .teshu{
+            background: aqua;
+        }
+        .box1{
+            width: 1010px;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<!-- 第一段：HTML和css -->
+    <div class="box">
+        <ul id="aul">
+            <li><img src="images/banner1.jpg" alt=""></li>
+            <li><img src="images/banner2.jpg" alt=""></li>
+            <li><img src="images/banner3.jpg" alt=""></li>
+        </ul>
+        <ul id="bul">
+            <li class="teshu">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+    <div class="box1">
+        <a class="prev" href="#">上一页</a>
+        <a class="next" href="#">下一页</a>
+    </div>
+</body>
+<script type="text/javascript" rel="script" src="js/index.js"></script>
+<script>
+    // 第二段js
+    window.onload = function () {
+        var aul = document.getElementById('aul');
+        aul.innerHTML += aul.innerHTML;
+        var ali = document.getElementsByTagName('li');
+        var bul = document.getElementById('bul');
+        var bli = bul.getElementsByTagName('li');
+        var iHeight = parseInt(getStyle(ali[0],'height'));
+        var prev = document.getElementsByClassName('prev')[0];
+        var next = document.getElementsByClassName('next')[0];
+        var timer = null;
+        var num = 0;
+
+        timer = setInterval(fn,1000);
+        function fn() {
+            clearInterval(timer);
+            num++;
+            startMove(aul,{
+                top : 10+'px'
+            },clear);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+</script>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>左右轮播</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .img{
+            width: 480px;
+            height: 300px;
+            margin: 0 auto;
+            border: 1px solid #2ab14f;
+            position: relative;
+            overflow: hidden;
+        }
+        ul{
+            width: 2880px;
+            position: absolute;
+        }
+        ul li{
+            width: 480px;
+            height: 300px;
+            list-style: none;
+            float: left;
+        }
+        img{
+            width: 480px;
+            height: 300px;
+        }
+
+        i{
+            display: block;
+            width: 15px;
+            height: 15px;
+            font-size: 12px;
+            float: left;
+            background-color: #9dd8b1;
+            border-radius: 50%;
+            color: #000;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="img">
+        <ul>
+            <li><img src="images/img1.jpg" alt="banner"></li>
+            <li><img src="images/img2.jpg" alt="banner"></li>
+            <li><img src="images/img3.jpg" alt="banner"></li>
+            <li><img src="images/img4.jpg" alt="banner"></li>
+            <li><img src="images/img5.jpg" alt="banner"></li>
+            <li><img src="images/img7.jpg" alt="banner"></li>
+        </ul>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var oul = document.getElementsByTagName('ul')[0];
+        var oli = oul.getElementsByTagName('li');
+        var timer = null,
+             n=0;
+        clearInterval(timer);
+        timer = setInterval(function () {
+            if(n>oli.length-1){
+                n=0;
+            }
+            oul.style.left = -(480*n)+'px';
+            n++;
+
+        },3000);
+    }
+</script>
+</html>
