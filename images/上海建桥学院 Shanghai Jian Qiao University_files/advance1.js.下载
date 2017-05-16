@@ -1,0 +1,88 @@
+var ad1_delta=0.08;
+var ad1_collection;
+var ad1_timer;
+var ad1_closeNum = 0;
+
+function ad1_floaters(objId) {
+	this.items = [];
+	this.id = objId;
+	/**
+	  * id : DIV容器id
+	  * direct : 在页面的位置，left or right
+	  * x : 距左或距右的距离
+	  * y : 距顶的距离
+	  * width : DIV宽度
+	  * height : DIV高度
+	  * content : 输出内容
+	  */
+	this.addItem = function(id,direct,x,y,width,height,content)
+	{
+		if(direct == "left"){
+			document.getElementById(this.id).innerHTML = '<DIV id=' + id + ' style="Z-INDEX: 10; POSITION: absolute; overflow:hidden; width:'+width+'px; height:'+height+'px;left:0px;top:0px">' + content + '</DIV>';
+		}else{
+			var html =document.getElementById(this.id).innerHTML;
+			document.getElementById(this.id).innerHTML =  html + '<DIV id=' + id + ' style="Z-INDEX: 10; POSITION: absolute; overflow:hidden;  width:'+width+'px; height:'+height+'px;right:0px;top:0px">' + content + '</DIV>';
+		}
+		var newItem = {};
+		newItem.id = id;
+		newItem.x = x;
+		newItem.y = y;
+		newItem.width = width;
+		newItem.height = height;
+		newItem.direct = direct;
+
+		this.items[this.items.length]  = newItem;
+	};
+	this.play = function()
+	{
+		ad1_collection = this.items;
+		ad1_timer = setInterval('ad1_play()',20);
+	};
+	this.close = function(obj)
+	{
+		for(var i=0;i<ad1_collection.length;i++){
+			if(obj == ad1_collection[i].id){
+				$("#"+ad1_collection[i].id).hide();
+				ad1_closeNum++;
+			}
+		}
+		if(ad1_closeNum == ad1_collection.length){
+			clearInterval(ad1_timer);
+		}
+	};
+}
+/**
+  * 对联浮动效果计算方法
+  */
+function ad1_play()
+{
+	//获取当前页面宽度
+	var pageWidth = $(document).width();
+	var pianyi = document.all ? 20 : 0;
+	//获取右对联距离上边和右边的距离
+	//循环函数，计算当前对联窗口距离页面上方+滚动条高度是否小于设置距离上边的距离
+	for(var i=0;i<ad1_collection.length;i++)
+	{
+		var followObj  = $("#"+ad1_collection[i].id);
+		if(ad1_collection[i].direct == "left") {
+			if(followObj.position().left != ad1_collection[i].x + $(document).scrollLeft()){
+				var goLeft = (ad1_collection[i].x + $(document).scrollLeft() - followObj.position().left) * ad1_delta;
+				goLeft = (goLeft > 0 ? 1 : -1) * Math.ceil(Math.abs(goLeft));
+				
+				document.getElementById(ad1_collection[i].id).style.left = (followObj.position().left + goLeft)+"px";
+			}
+		}else if(ad1_collection[i].direct == "right") {
+			if((pageWidth - pianyi - ad1_collection[i].width - followObj.position().left) != ad1_collection[i].x){
+				var goRight = ((pageWidth - pianyi - ad1_collection[i].width - followObj.position().left) - ad1_collection[i].x) * 0.2;
+				goRight = (goRight > 0 ? 1 : -1) * Math.ceil(Math.abs(goRight));
+				document.getElementById(ad1_collection[i].id).style.left = (followObj.position().left + goRight)+"px";
+			}
+		}
+	
+		if(followObj.position().top != ad1_collection[i].y + $(document).scrollTop()) {
+			var goTop=((ad1_collection[i].y + $(document).scrollTop() - followObj.position().top)) * ad1_delta;
+			goTop = (goTop > 0 ? 1 : -1) * Math.ceil(Math.abs(goTop));
+			document.getElementById(ad1_collection[i].id).style.top = (followObj.position().top + goTop)+"px";
+		}
+	}
+}

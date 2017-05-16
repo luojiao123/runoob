@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <style media="screen">
+      *{
+        margin:0px;
+        padding:0px;
+      }
+      #box{
+        width:100px;
+        margin:0 auto;
+      }
+      li{
+        list-style: none;
+      }
+      h2{
+        cursor:pointer;
+        text-align: center;
+      }
+      ul{
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+      <div id="box">
+          <div id="first_line">
+            <h2>朋友</h2>
+              <ul>
+                  <li>11</li>
+                  <li>11</li>
+                  <li>11</li>
+                  <li>11</li>
+              </ul>
+          </div>
+          <div id="second_line">
+            <h2>同学</h2>
+              <ul>
+                  <li>11</li>
+                  <li>11</li>
+                  <li>11</li>
+                  <li>11</li>
+              </ul>
+          </div>
+      </div>
+  </body>
+
+  <script type="text/javascript">
+      window.onload = function(){
+        var oh2 = document.getElementsByTagName('h2');
+        var ofriends = document.getElementsByTagName('ul');
+        for (var i = 0; i < oh2.length; i++) {
+          oh2[i].gg = i;
+          // alert(i);
+          oh2[i].onclick = function(){
+            if (this.className == '') {
+              ofriends[this.gg].style.display = "block";
+              this.className = 'fff';
+              // alert(this)
+            } else{
+              ofriends[this.gg].style.display = "none";
+              this.className= '';
+            }
+          }
+        }
+
+
+      }
+  </script>
+</html>

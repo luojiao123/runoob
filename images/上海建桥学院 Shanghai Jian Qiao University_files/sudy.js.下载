@@ -1,0 +1,11 @@
+$(function(){
+	$(".calendar_news").find(".month").each(function(){
+		
+		var month = parseInt($.trim($(this).text()||"0"));
+		if(month>0){
+			$(this).html(getMonth(month-1,"en"));
+		}
+	})
+   
+});
+

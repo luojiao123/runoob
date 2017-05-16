@@ -1,0 +1,24 @@
+/**
+ * 
+ * @authors Nat Liu (fliu@sudytech.com)
+ * @date    2014-10-24 16:46:25
+ * @version 2014-10-24 16:46:25
+ */
+
+$(function(){
+	$(".main-nav-panel li").hover(function() {
+		/* Stuff to do when the mouse enters the element */
+		$(this).children('ul').stop(true,true).slideDown(200).end().children('a').addClass('cur');
+	}, function() {
+		/* Stuff to do when the mouse leaves the element */
+		$(this).removeClass('cur').children('ul').stop(true,true).slideUp(200).end().children('a').removeClass('cur');
+	});
+	$("#weixin").zoombox();
+	$(".weixin").hover(function() {
+		/* Stuff to do when the mouse enters the element */
+		$(this).children('.weixin-qrcode').show();
+	}, function() {
+		/* Stuff to do when the mouse leaves the element */
+		$(this).children('.weixin-qrcode').hide();
+	});
+});

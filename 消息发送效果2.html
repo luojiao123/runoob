@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>信息发送模拟功能（无错版）</title>
+    <style>
+        #container{
+            position: relative;
+            height: 620px;
+            width: 300px;
+            background: url("images/message.jpg") no-repeat center center;
+            margin: auto;
+        }
+        #content{
+            position: absolute;
+            top: 100px;
+            left: 32px;
+            width: 236px;
+            height: 375px;
+            overflow: scroll;
+        }
+        #footer{
+            position: absolute;
+            left: 32px;
+            display: inline;
+            bottom: 100px;
+            margin: 0;
+            background: #eee;
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+            width: 236px;
+            text-align: center;
+            line-height: 39px;
+        }
+        #photo{
+            width: 24px;
+            height: 24px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            padding: 2px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        #message{
+            width: 140px;
+            height: 23px;
+            font-size: 12px;
+            vertical-align: middle;
+        }
+        #send{
+            border: 1px solid gray;
+            padding: 5px;
+            vertical-align: middle;
+            border-radius: 5px;
+            font-size: 14px;
+            color: gray;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #content p{
+            margin: 2px;
+        }
+        #content span{
+            display: inline-block;
+            max-width: 160px;
+            font-size: 14px;
+            padding: 5px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            margin: 3px;
+            vertical-align: top;
+            word-wrap: break-word;
+        }
+        #content img{
+            width: 24px;
+            height: 24px;
+            margin: 3px;
+            border-radius: 5px;
+            padding: 2px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="content">
+            <p style="text-align: left">
+                <img src="images/dabin.jpg" alt=""><span style="background-color: #36ff07">lskdfjdsofj</span>
+            </p>
+            <p style="text-align: right">
+                <span style="background-color: #eee">slkfdjsak</span><img src="images/fendou.jpg" alt="">
+            </p>
+        </div>
+        <p id="footer">
+            <img id="photo" src="images/fendou.jpg" alt="">
+            <input type="text" id="message" placeholder="选头像、输文字、点发送">
+            <a href="javascript:" id="send">发送</a>
+        </p>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        //获取元素
+        var photo = document.getElementById('photo');
+        var content = document.getElementById('content');
+        var message = document.getElementById('message');
+        var send = document.getElementById('send');
+        var on = true;
+
+        photo.onclick = function () {
+            //  点击的时候切换头像
+            if(on){
+                photo.src = 'images/fendou.jpg';
+                on = false;
+            }else{
+                photo.src = 'images/dabin.jpg';
+                on = true;
+            }
+        };
+        photo.onclick();  // 第一次进入页面就调用,否则第一次点不动（第一次点了没反应）
+        send.onclick = function () {
+            if(message.value == false){
+                alert('不能发送空白内容');
+                return false;
+            }
+            if(on){
+                content.innerHTML =  content.innerHTML +'<p style="text-align: left"><img src="images/dabin.jpg" alt=""><span style="background-color: #36ff07">'+message.value+'</span></p>';
+                content.scrollTop = content.scrollHeight;  // 使滚动条在内容更新时自动滚到底部
+            }else {
+                content.innerHTML =  content.innerHTML +'<p style="text-align: right"><span style="background-color: #eee">'+message.value+'</span><img src="images/fendou.jpg" alt=""></p>';
+                content.scrollTop = content.scrollHeight;
+            }
+            message.value = '';
+        }
+    }
+</script>
+</html>

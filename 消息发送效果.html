@@ -15,11 +15,18 @@
             position: absolute;
             width: 235px;
             height: 368px;
+            overflow: auto;
             background: #f7f2ec;
             left: 26px;
             top: 87px;
-            border-bottom: 1px solid #ccc;
         }
+        .send span{
+            position: absolute;
+            display: block;
+            padding: 5px;
+            margin: 10px 5px;
+        }
+
         .nosend{
             position: absolute;
             width: 235px;
@@ -27,28 +34,91 @@
             background: #f4e8d8;
             left: 26px;
             bottom: 93px;
+            border-top: 1px solid #ccc;
         }
         .nosend i{
             display: block;
-            width: 40px;
-            height: 40px;
-            background: url("images/link.png") no-repeat -2px;
+            width: 36px;
+            height: 36px;
+            background: url("images/link.png") no-repeat -6px -7px;
+            float: left;
+            border: 1px solid #9c9c9c;
+            margin: 5px 2px;
+            border-radius: 10px;
+        }
+        .nosend i.on{
+            background: url("images/link.png") no-repeat -55px -7px;
+        }
+        .nosend i.off{
+            background: url("images/link.png") no-repeat -6px -7px;
         }
         .text{
-            width: 142px;
-            height: 38px;
+            width: 136px;
+            height: 32px;
+            margin-top: 5px;
+            border: 1px solid #9c9c9c;
+            border-radius: 10px;
+        }
+        .sendKey{
+            background: #fff;
+            border: none;
         }
     </style>
 </head>
 <body>
     <div class="box">
         <img src="images/message.jpg" alt="message">
-        <div class="send"></div>
+        <div class="send">
+        </div>
         <div class="nosend">
-            <i></i>
+            <i class="icon"></i>
             <input class="text" type="text">
-            <input type="button" value="发送">
+            <input class="sendKey" type="button" value="发送">
         </div>
     </div>
 </body>
+<script type="text/javascript" rel="script" src="js/index.js"></script>
+<script>
+    window.onload = function () {
+        var oSend = document.getElementsByClassName('send')[0];
+        var oi = document.getElementsByClassName('icon')[0];
+        var oText = document.getElementsByClassName('text')[0];
+        var oSendKey = document.getElementsByClassName('sendKey')[0];
+        var flag = true;
+        var oSpan = oSend.getElementsByTagName('span');
+
+        oi.onclick = function () {
+            if(flag){
+                flag = false;
+                this.className = 'on';
+            }else{
+                this.className = 'off';
+                flag = true;
+            }
+        }
+
+        fn();
+        function fn() {
+            oSendKey.onclick = function () {
+                    if(oSend.value == false){
+                        alert('不能发送空白内容');
+                        return false;
+                    }
+                    if(flag){
+                        oSend.innerHTML += '<span style="background-color: green;left: 0px">'+oText.value+'</span>';
+//                        oSpan.style.backgroundColor = 'green';
+//                      oSpan[2*i-1].style.top = 20*i+oSend.offsetTop+'px';
+//                            oSpan.style.left = 0 + 'px';
+                    }else{
+                        oSend.innerHTML += '<span style="background-color: pink; right: 0px">'+oText.value+'</span>';
+//                        oSpan.style.backgroundColor = 'pink';
+//                            oSpan[2*i+1].style.top = 20*i+oSend.offsetTop+'px';
+//                        oSpan.style.right = 0 + 'px';
+                    }
+                oText.value = '';
+                }
+        }
+
+    }
+</script>
 </html>

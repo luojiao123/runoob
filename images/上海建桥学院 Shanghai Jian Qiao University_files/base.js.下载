@@ -1,0 +1,156 @@
+/**
+ * 
+ * @authors Nat Liu (fliu@sudytech.com)
+ * @date    2014-11-06 13:23:12
+ * @version 2014-11-06 13:23:12
+ */
+/**date format**/
+Date.prototype.Format = function (fmt) {
+    var o = {
+        "M+": this.getMonth() + 1, //月份 
+        "d+": this.getDate(), //日 
+        "h+": this.getHours(), //小时 
+        "m+": this.getMinutes(), //分 
+        "s+": this.getSeconds(), //秒 
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+        "S": this.getMilliseconds() //毫秒 
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+}
+
+/**html5 support**/
+function supports_html5_storage() {
+    try {
+        return 'localStorage' in window && window['localStorage'] !== null;
+    } catch (e) {
+        return false;
+    }
+}
+
+var tempPath = ''; // 设置模板路径
+
+function getPath(){
+
+	var js = document.scripts, jsPath = js[js.length - 1].src;
+	var tpl = jsPath.match(/\/_upload\/tpl\/.*?template\d+\//);
+    return tempPath ? tempPath : tpl[0];
+}
+
+tempPath = getPath();
+
+;(function($){
+	"use strict";
+	if($==undefined)return false;
+
+	var D = document, W = window, J = {}, wrapWidth = 980;
+
+	function getClient(){
+
+		W.width = $(W).width();
+		W.height = $(W).height();
+	}
+
+	$(function(){
+
+		$('#searchtext').focusin(function() {
+	        $("#search").css({
+	            "background": "#FFFFFF",
+	            "border-color": "#E6DFDD"
+	        });
+	    });
+	    $('#searchtext').focusout(function() {
+	        $("#search").css({
+	            "background": "#F8F8F8",
+	            "border-color": "#f1f1f1"
+	        });
+	    });
+	    $('#searchtext').mouseover(function() {
+	        $("#search").css({
+	            "border-color": "#ccc"
+	        });
+	    });
+	    $('#searchtext').mouseout(function() {
+	        $("#search").css({
+	            "border-color": "#f1f1f1"
+	        });
+	    });
+
+		//response
+		getClient();
+
+		J.allMenu = $(".wp-menu");
+
+		J.allMenu.each(function(index, el) {
+			$(el).children('li').last().addClass('last').
+			end().first().addClass('first');
+		});
+
+		J.mainMenu = $(".main-nav").find(".wp-menu");
+
+		J.mainMenu.find(".sub-menu").each(function(index, el) {
+			
+			var childs = $(el).children();
+			if(childs.length<3){
+
+				$(el).addClass('single-w-nav');
+
+			}
+
+		});
+
+		function bindEvents(){
+
+			if(W.width<wrapWidth){
+
+				$("li", J.mainMenu).off("mouseenter.mainMenu mouseleave.mainMenu")
+				.data("bindedEvent",false);
+
+				if(!$("#nav-switch").data("bindedEvent")){
+					$("#nav").stop(true,true).hide();
+					$("#nav-switch").on("click.navSlide",function(){
+
+						$("#nav").slideToggle(200);
+					})
+					.data("bindedEvent",true);
+
+					$("#nav .menu-switch-arrow").on("click.menuSlide",function(){
+
+						$(this).siblings('.sub-menu').slideToggle(200);
+					});
+				}
+
+			}else{
+				$("#nav").stop(true,true).show();
+
+				if(!$("li", J.mainMenu).data("bindedEvent")){
+
+					$("li", J.mainMenu).on("mouseenter.mainMenu",function(){
+
+						$(this).addClass('selected')
+						.children('.sub-menu').stop()
+						.slideDown(400, "easeOutQuint");
+					}).on("mouseleave.mainMenu",function(){
+
+						$(this).removeClass('selected')
+						.children('.sub-menu').stop(true,true)
+						.hide();
+					})
+					.data("bindedEvent",true);
+				}
+			}
+
+		}
+
+		bindEvents();
+
+		$(W).resize(function(event) {
+			/* Act on the event */
+	        getClient();
+	        bindEvents();
+		});
+	});
+
+})(window.jQuery||window.Zepto);
