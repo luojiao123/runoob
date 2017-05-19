@@ -1,0 +1,96 @@
+<html>
+<head>
+    <title>移动Div</title>
+    <style type="text/css" rel="stylesheet">
+        #movediv{
+            width:100px;height:100px;position:absolute;border:1px solid #000;background:#EAEAEA;
+            cursor:pointer;
+            text-align:center;
+            line-height:100px;
+            left:100px;
+            top:10px;
+        }
+    </style>
+    <script language="javascript" type="text/javascript">
+        var _IsMousedown = 0;
+        var _ClickLeft = 0;
+        var _ClickTop = 0;
+        function moveInit(divID,evt)
+        {
+            _IsMousedown = 1;
+            if(getBrowserType() == "NSupport")
+            {
+                return;
+            }
+            var obj = getObjById(divID);
+            if(getBrowserType() == "fox")
+            {
+                _ClickLeft = evt.pageX - parseInt(obj.style.left);
+                _ClickTop = evt.pageY - parseInt(obj.style.top);
+            }else{
+                _ClickLeft = evt.x - parseInt(obj.style.left);
+                _ClickTop = evt.y - parseInt(obj.style.top);
+            }
+        }
+        function Move(divID,evt)
+        {
+            if(_IsMousedown == 0)
+            {
+                return;
+            }
+            var objDiv = getObjById(divID);
+            if(getBrowserType() == "fox")
+            {
+                objDiv.style.left = evt.pageX - _ClickLeft;
+                objDiv.style.top = evt.pageY - _ClickTop;
+            }
+            else{
+                objDiv.style.left = evt.x - _ClickLeft;
+                objDiv.style.top = evt.y - _ClickTop;
+            }
+
+        }
+        function stopMove()
+        {
+            _IsMousedown = 0;
+        }
+        function getObjById(id)
+        {
+            return document.getElementById(id);
+        }
+        function getBrowserType()
+        {
+            var browser=navigator.appName
+            var b_version=navigator.appVersion
+            var version=parseFloat(b_version)
+            //alert(browser);
+            if ((browser=="Netscape"))
+            {
+                return "fox";
+            }
+            else if(browser=="Microsoft Internet Explorer")
+            {
+                if(version>=4)
+                {
+                    return "ie4+";
+                }
+                else
+                {
+                    return "ie4-";
+                }
+            }
+            else
+            {
+                return "NSupport";
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="movediv" style="left:20px;top:20px; z-index:5;" onmousedown="moveInit('movediv',event);" onmousemove="Move('movediv',event)" onmouseup="stopMove()" onmouseout="stopMove()">move</div>
+<div id="movediv1" style="position:absolute;left:120px;top:120px;z-index:5; width:80px; height:80px; background-color:Blue; cursor:move;" onmousedown="moveInit('movediv1',event);" onmousemove="Move('movediv1',event)" onmouseup="stopMove()" onmouseout="stopMove()">move1</div>
+<div id="main" style="position:absolute;left:420px;top:100px; width:180px; height:180px; background-color:Gray;z-index:0;">
+    只允许在这个范围内拖放
+</div>
+</body>
+</html>
